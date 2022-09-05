@@ -1,12 +1,12 @@
 def greet (lang):
     if lang == 'es':
-        print('Hola')
+        return('Hola')
     elif lang == 'fr':
-        print('Bonjour')
+        return('Bonjour')
     else:
-        print('Hello')
+        return('Hello')
 
-greet('en')
-greet('es')
-greet('fr')
+print(greet('en'), 'Glenn')
+print(greet('es'), 'Sally')
+print(greet('fr'), 'Michael')
 
