@@ -6,8 +6,7 @@ def greet (lang):
     else:
         print('Hello')
 
-greet1 = greet('en')
-greet2 = greet('es')
-greet3 = greet('fr')
+greet('en')
+greet('es')
+greet('fr')
 
-print(greet1, greet2, greet3)
