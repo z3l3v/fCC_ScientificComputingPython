@@ -10,7 +10,7 @@ while True:
 average = total / count
 print('Average: ', average)
 
-numlist = list()
+numlist = list  ()
 while True:
     inp1 = input('Enter a number: ')
     if inp1 == 'done' : break
