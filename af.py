@@ -1,58 +1,43 @@
-def arithmetic_arranger(problems):
+def arithmetic_arranger(problems, show=False):
+          
+  y = 0
+  top_row, bottom_row, line, results = '', '', '', ''
+
+  if len(problems) > 5:
+    return "Error: Too many problems."
+  
+  while len(problems) > y:
     
-    if len(problems) > 5:
-      print ("Error: Too many problems")
+      m = problems[y].split()
+      top = m[0]
+      bottom = m[2]
+      operator = m[1]
         
-    top = []
-    bottom = []
-    operator = []
-    list_of_lists = []
-    
-    for problem in problems:
-        m = problem.split(" ")
-        top.append(m[0])
-        bottom.append(m[2])
-        operator.append(m[1])
-        list_of_lists = top + bottom
+      if len(top) < 5 and len(bottom) < 5:
+          if top.isnumeric() and bottom.isnumeric():
+            if operator == "+":
+              result = str(int(top) + int(bottom))
+            elif operator == '-':
+              result = str(int(top) - int(bottom))
+            else: 
+              return "Error: Operator must be '+' or '-'."
+          else:
+              return "Error: Numbers must only contain digits."
+      else: 
+        return "Error: Numbers cannot be more than four digits."
         
+      length = max(len(top), len(bottom)) + 2
+      spaces = ' ' * 4      
         
-    if "*" in operator or "/" in operator:
-        return ("Error: Operator must be '+' or '-'.")
-     
-    for i in list_of_lists:
-        if int(i) == False:
-            return ("Error: Numbers must only contain digits.")
-            break
-            
-    for i in list_of_lists: 
-        if len(i) > 4:
-            return ("Error: Numbers cannot be more than four digits.")
-    
-    top_row = '' 
-    dashes = ''
-    solutions = '' 
-    values = list(map(lambda x: eval(x), problems))
-    
-    for i in range(0, len(top), 2):
-        length = max(len(top[i]), len(top [i])) + 2
-        top_row += top[i].rjust(length)
-        dashes += '-' * length
-        solutions += str(values[i // 2]).rjust(length)
-        if i != len(top) - 2:
-            top_row = ' ' * 4
-            dashes += ' ' * 4
-            solutions += ' ' * 4
-        print (top_row)
-         
-    '''
-    #length = max(len(top[0]), len (bottom[2])) + 2
-    #width = length +2 
-    
-    line1 = f"{list_of_lists[0] :> {width}"
-    line2 = f"{f'{lists_of_lists[1]} {lists_of_lists[2]}':>{width}}"
-    dashes = '_' * width
-    answers = str(int(lists_of_lists[0]} + int(list_of_lists[2]})
-    a = f"{ans :>{width}}"
-    '''
-     
-arithmetic_arranger(["4212 + 89", "2 + 1", "23 + 45"])
+      top_row += ' ' * (length - len(top)) + top + spaces
+      bottom_row += operator + ' ' * (length - len(bottom) - 1) + bottom + spaces
+      line += length * '-' + spaces
+      results = ' ' * (length - len(result)) + result + spaces
+      y += 1 
+      
+  if show:
+        arranged = top_row.rstrip() + '\n' + bottom_row.rstrip() + '\n' + line.rstrip() + '\n' + results.rstrip()
+  else:
+        arranged = top_row.rstrip() + '\n' + bottom_row.rstrip() + '\n' + line.rstrip()
+
+  return arranged
