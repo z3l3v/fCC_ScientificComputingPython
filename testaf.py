@@ -17,16 +17,20 @@ def arithmetic_arranger(problems):
     
         
     if "*" in operator or "/" in operator:
+        print (operator)
         print ("Error: Operator must be '+' or '-'.")
       
     for i in list_of_lists:
+        int(i)
         if i != int:
             print ("Error: Numbers must only contain digits.")
+            print (i)
+            print (type(i))
             break 
            
     for i in range(len(list_of_lists)):
         if len(list_of_lists[i]) > 4:
-            
+            print (list_of_lists[i])
             print ("Error: Numbers cannot be more than four digits.")
     
     top_row = '' 
@@ -35,5 +39,5 @@ def arithmetic_arranger(problems):
     values = list(map(lambda x: eval(x), problems))
     
     
-arithmetic_arranger(["4212 + 89", "2 + 1", "23 + 45", "69 + 3", "42056 + 4"])
+arithmetic_arranger(["420 + 89", "2 + 1", "23 + 45", "69 + 3", "4056 + 4"])
     
