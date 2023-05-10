@@ -12,7 +12,7 @@ def arithmetic_arranger(problems):
     operator = []
     
     for problem in problems:
-        parts = problem.split(" ")
+        parts = problem.split(problem)
         print(parts)
         #first.append(parts[0])
         #second.append(parts[2])
